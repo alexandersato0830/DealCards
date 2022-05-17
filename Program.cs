@@ -26,10 +26,15 @@ namespace DealCards
                 }
                 else if (Int32.TryParse(command, out numDrawn))
                 {
-                    cards = deck.Draw(numDrawn);
+                    if (numDrawn > -1 && numDrawn < 53)
+                    {
+                        cards = deck.Draw(numDrawn);
 
-                    for (int x = 0; x < cards.Length; x++)
-                        Console.WriteLine(cards[x].ToString());
+                        for (int x = 0; x < cards.Length; x++)
+                            Console.WriteLine(cards[x].ToString());
+                    }
+                    else
+                        Console.WriteLine("Cannot draw " + numDrawn.ToString() + " cards!");
                 }
             }
         }
